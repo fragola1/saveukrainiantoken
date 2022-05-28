@@ -19,9 +19,9 @@ contract ShadowsOfForgottenAncestors is ERC721A {
     constructor() ERC721A(NAME, SYMBOL) {}
 
     function mint(uint256 quantity) external payable {
-        require(totalSupply() + quantity <= MAX_FOLKS, "FOLKs Sold Out");
+        require(totalSupply() + quantity <= MAX_FOLKS, "Gente esaurita");
         require(balanceOf(msg.sender) + quantity <= MAX_FOLKS_PER_HOLDER, "Max FOLK per indirizzo raggiunto");
-        require(msg.value == PRICE_PER_FOLK * quantity, "Wrong price");
+        require(msg.value == PRICE_PER_FOLK * quantity, "Prezzo sbagliato");
 
         _safeMint(msg.sender, quantity);
     }
